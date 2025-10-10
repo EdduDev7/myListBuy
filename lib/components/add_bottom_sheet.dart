@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 class AddBottomSheet extends StatelessWidget {
   AddBottomSheet({super.key});
 
+  // ignore: non_constant_identifier_names
   final FormKey = GlobalKey<FormState>();
   final TextEditingController controllerProduto = TextEditingController();
   final TextEditingController controllerQuantidade = TextEditingController();
@@ -79,7 +80,19 @@ class AddBottomSheet extends StatelessWidget {
                   height: 40,
                   width: 300,
                   child: TextFormField(
-                    autofocus: true,
+                    onFieldSubmitted: (value) {
+                      if (controllerProduto.text.isNotEmpty) {
+                        Compras novaCompra = Compras(
+                          controllerProduto.text,
+                          false,
+                          controllerQuantidade.text,
+                        );
+                        viewModels.addCompras(novaCompra);
+                        controllerProduto.clear();
+                        controllerQuantidade.clear();
+                        Navigator.pop(context);
+                      }
+                    },
                     autocorrect: false,
                     controller: controllerQuantidade,
                     keyboardType: TextInputType.number,

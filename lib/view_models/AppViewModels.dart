@@ -7,9 +7,11 @@ class Appviewmodels extends ChangeNotifier {
   Usuarios user = Usuarios('Eduardo Aparecido');
 
   Color cor1 = Colors.grey.shade300;
-  Color cor2 = Colors.black12;
+  Color cor2 = Colors.grey.shade500;
   Color cor3 = Colors.grey.shade700;
   Color cor4 = Colors.grey.shade800;
+
+  int get numCompras => itens.length;
 
   void addCompras(Compras novaCompra) {
     itens.add(novaCompra);
