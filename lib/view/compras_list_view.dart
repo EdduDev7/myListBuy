@@ -14,7 +14,7 @@ class ComprasListView extends StatelessWidget {
         return Container(
           padding: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
-            color: viewModels.cor1,
+            color: viewModels.cor4,
             borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
           ),
           child: ListView.separated(
@@ -24,6 +24,7 @@ class ComprasListView extends StatelessWidget {
             itemCount: viewModels.numCompras,
             itemBuilder: (context, index) {
               return Card(
+                color: viewModels.cor3,
                 margin: EdgeInsets.symmetric(horizontal: 12),
                 child: ListTile(
                   leading: Checkbox(
@@ -50,6 +51,12 @@ class ComprasListView extends StatelessWidget {
                   subtitle: Text(
                     "quantidade: ${viewModels.itens[index].quantidade}",
                     style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      viewModels.removeCompras(viewModels.itens[index]);
+                    },
+                    icon: Icon(Icons.delete, color: Colors.black),
                   ),
                 ),
               );
