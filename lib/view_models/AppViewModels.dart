@@ -5,12 +5,26 @@ import 'package:mylistbuy/models/usuarios_models.dart';
 class Appviewmodels extends ChangeNotifier {
   List<Compras> itens = <Compras>[];
   Usuarios user = Usuarios('Eduardo Aparecido');
-  Color cor4 = Color(0xffdfdfdf);
-  Color cor3 = Color(0xffc0c0c0);
-  Color cor2 = Color(0xff969696);
-  Color cor1 = Color(0xff808080);
+
+  Color VerdeClaro = Color(0xff2ECC71);
+  Color VerdeAzulado = Color(0xff2ECC71);
+  Color AzulMedio = Color(0xff3498DB);
+  Color cor4 = Color(0xffffffff);
+  Color cor3 = Color(0xffdfdfdf);
+  Color cor2 = Color(0xffc0c0c0);
+  Color cor1 = Color(0xffa0a0a0);
 
   int get numCompras => itens.length;
+
+  int get numRestantes {
+    int count = 0;
+    for (var item in itens) {
+      if (!item.completado) {
+        count++;
+      }
+    }
+    return count;
+  }
 
   void addCompras(Compras novaCompra) {
     itens.add(novaCompra);

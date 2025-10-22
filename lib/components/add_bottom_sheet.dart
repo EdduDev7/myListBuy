@@ -17,7 +17,18 @@ class AddBottomSheet extends StatelessWidget {
     return Consumer<Appviewmodels>(
       builder: (context, viewModels, child) {
         return Container(
-          color: viewModels.cor1,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                viewModels.VerdeClaro,
+                viewModels.VerdeAzulado,
+                viewModels.AzulMedio,
+              ],
+            ),
+          ),
+
           child: Padding(
             padding: EdgeInsets.only(
               bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -50,7 +61,7 @@ class AddBottomSheet extends StatelessWidget {
                     //decoraçao do formulario
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: viewModels.cor2,
+                      fillColor: viewModels.cor4,
 
                       labelText: 'Produto',
                       labelStyle: TextStyle(
@@ -102,7 +113,7 @@ class AddBottomSheet extends StatelessWidget {
                     //decoraçao do formulario
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: viewModels.cor2,
+                      fillColor: viewModels.cor4,
                       labelText: 'Quantidade',
                       hintStyle: TextStyle(color: Colors.white),
                       labelStyle: TextStyle(

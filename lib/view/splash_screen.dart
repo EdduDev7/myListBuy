@@ -1,47 +1,106 @@
 import 'package:flutter/material.dart';
 import 'package:mylistbuy/view/mainScreen.dart';
+import 'package:mylistbuy/view_models/AppViewModels.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    var size = MediaQuery.of(context).size;
-    var appBarHeight = AppBar().preferredSize.height;
-    var screenHeight = (size.height - appBarHeight) - MediaQuery.of(context).padding.top;
-
-    return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        padding: EdgeInsets.all(10),
-        height: screenHeight,
-        width: size.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Icon(Icons.shopping_cart, size: 120, color: Colors.black38),
-            SizedBox(height: screenHeight * 0.05),
-            Text('MyListBuy', style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold)),
-            Text('Sua lista de compras na palma da mão!', style: TextStyle(color: Colors.black, fontSize: 20)),
-            SizedBox(height: screenHeight * 0.25),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Mainscreen()));
-              },
-              child: Container(
-                height: screenHeight * 0.10,
-                width: size.width,
-                decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(10),
+    return Consumer<Appviewmodels>(
+      builder: (context, viewModels, child) {
+        return Scaffold(
+          backgroundColor: viewModels.cor4,
+          body: SafeArea(
+            bottom: false,
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          viewModels.VerdeClaro,
+                          viewModels.VerdeAzulado,
+                          viewModels.AzulMedio,
+                        ],
+                      ),
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.circular(30),
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/mylistbuy_lo.png',
+                          height: 180,
+                        ),
+                        SizedBox(height: 15),
+                        Text(
+                          'SUA LISTA DE COMPRAS NA PALMA DA MÃO',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                child: Center(child: Text('Clique Aqui!', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold))),
-              ),
+                Expanded(
+                  flex: 2,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Mainscreen()),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(color: viewModels.cor4),
+                      child: Center(
+                        child: Container(
+                          height: 60,
+                          width: 400,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                viewModels.VerdeClaro,
+                                viewModels.VerdeAzulado,
+                                viewModels.AzulMedio,
+                              ],
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'CLIQUE PARA CONTINUAR',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

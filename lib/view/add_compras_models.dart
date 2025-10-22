@@ -14,12 +14,12 @@ class AddComprasModels extends StatelessWidget {
           height: 60,
           width: 60,
           child: FloatingActionButton(
-            backgroundColor: viewModels.cor3,
+            backgroundColor: viewModels.AzulMedio,
             elevation: 5,
             onPressed: () {
               viewModels.bottomSheetBuilder(AddBottomSheet(), context);
             },
-            child: Icon(Icons.add, color: Colors.white),
+            child: Icon(Icons.add, color: viewModels.VerdeClaro),
           ),
         );
       },

@@ -37,8 +37,8 @@ class ComprasListView extends StatelessWidget {
                       // ignore: invalid_use_of_protected_member
                       viewModels.notifyListeners();
                     },
-                    activeColor: Colors.black,
-                    checkColor: Colors.white,
+                    activeColor: viewModels.VerdeClaro,
+                    checkColor: Colors.black,
                   ),
                   title: Text(
                     viewModels.itens[index].produto,
@@ -50,13 +50,17 @@ class ComprasListView extends StatelessWidget {
                   ),
                   subtitle: Text(
                     "quantidade: ${viewModels.itens[index].quantidade}",
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   trailing: IconButton(
                     onPressed: () {
                       viewModels.removeCompras(viewModels.itens[index]);
                     },
-                    icon: Icon(Icons.delete, color: Colors.black),
+                    icon: Icon(Icons.delete, color: viewModels.AzulMedio),
                   ),
                 ),
               );
