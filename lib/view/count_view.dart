@@ -24,7 +24,14 @@ class CountView extends StatelessWidget {
                           height: 65,
                           width: 200,
                           decoration: BoxDecoration(
-                            color: viewModels.cor2,
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                viewModels.VerdeClaro,
+                                Colors.grey.shade100,
+                              ],
+                            ),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Column(
@@ -51,7 +58,14 @@ class CountView extends StatelessWidget {
                           height: 65,
                           width: 200,
                           decoration: BoxDecoration(
-                            color: viewModels.cor2,
+                            gradient: LinearGradient(
+                              colors: [
+                                viewModels.AzulMedio,
+                                Colors.grey.shade100,
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Column(
